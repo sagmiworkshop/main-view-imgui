@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  sdl-opengl-dev:
+    build: .
+    container_name: glGUIdevel
+    volumes:
+      - ./workspace:/workspace
+    environment:
+      - DISPLAY=host.docker.internal:0  # Point to Windows X server
+    ports:
+      - "8080:8080"  # Optional, if you need any ports exposed for your UI app
+    network_mode: "host"  # Needed for OpenGL access (or use bridge)
+    stdin_open: true
+    tty: true
+    restart: always
